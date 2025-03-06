@@ -20,6 +20,7 @@
     "@types/node": "^22.13.9",
     "concurrently": "^9.1.2",
     "eslint": "^9.21.0",
+    "eslint-plugin-format": "^1.0.1",
     "laravel-vite-plugin": "^1.2.0",
     "lint-staged": "^15.4.3",
     "simple-git-hooks": "^2.11.1",
@@ -45,7 +46,7 @@
     "{app,database,tests}/**/*.php": [
       "php vendor/bin/pint --preset laravel"
     ],
-    "**/*.{json,js,ts}": [
+    "**/*.{css,json,js,ts}": [
       "eslint --fix"
     ]
   }
