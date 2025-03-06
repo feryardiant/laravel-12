@@ -1,11 +1,11 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/vue-starter-kit",
+    "name": "feryardiant/laravel12-starterkit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Yet another Laravel Starter-Kit.",
     "keywords": [
         "laravel",
-        "framework"
+        "starter-kit",
+        "inertia-vue"
     ],
     "license": "MIT",
     "require": {
@@ -75,6 +75,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
