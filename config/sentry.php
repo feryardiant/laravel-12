@@ -20,7 +20,7 @@ return [
 
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#ignore-exceptions
     'ignore_exceptions' => [
-        CommandNotFoundException::class
+        CommandNotFoundException::class,
     ],
 
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#ignore-transactions
