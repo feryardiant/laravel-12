@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [starter/*]
 
+env:
+  APP_ENV: ${{ vars.APP_ENV }}
+
 jobs:
   prepare:
     name: Prepare
