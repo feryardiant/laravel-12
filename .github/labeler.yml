@@ -1,0 +1,65 @@
+integration:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/*.yml'
+          - 'app/Providers/**.php'
+          - 'tests/Browser/**.php'
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .env.example
+          - '**.md'
+
+deployment:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/deploy.yml
+          - 'scripts/deploy/**'
+          - scripts/deploy.php
+
+api:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/Http/Controllers/Api/**.php'
+          - 'app/Http/Resources/**.php'
+          - routes/api.php
+
+auth:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/Http/Controller/Auth/**.php'
+          - 'app/Http/Middleware/**.php'
+          - 'app/Policies/**.php'
+          - config/auth.php
+          - routes/auth.php
+
+database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/Models/**.php'
+          - 'database/**.php'
+
+experiences:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/Http/Controllers/**.php'
+          - 'app/Http/Requests/**.php'
+          - routes/*.php
+
+frondend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'app/Views/**.php'
+          - 'resources/client/**'
+          - 'resources/css/**'
+          - 'resources/js/**'
+          - 'resources/views/**'
+
+localization:
+  - changed-files:
+      - any-glob-to-any-file: 'resources/lang/**'
+
+enhancement:
+  - changed-files:
+      - any-glob-to-any-file: '**'
