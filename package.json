@@ -1,6 +1,7 @@
 {
     "private": true,
     "type": "module",
+    "packageManager": "pnpm@10.5.0",
     "scripts": {
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
@@ -10,42 +11,42 @@
         "lint": "eslint . --fix"
     },
     "devDependencies": {
-        "@eslint/js": "^9.19.0",
-        "@types/node": "^22.13.5",
-        "@vue/eslint-config-typescript": "^14.3.0",
-        "eslint": "^9.17.0",
-        "eslint-config-prettier": "^10.0.1",
-        "eslint-plugin-vue": "^9.32.0",
-        "prettier": "^3.4.2",
+        "@eslint/js": "^9.21.0",
+        "@types/node": "^22.13.9",
+        "@vue/eslint-config-typescript": "^14.5.0",
+        "eslint": "^9.21.0",
+        "eslint-config-prettier": "^10.0.2",
+        "eslint-plugin-vue": "^9.33.0",
+        "prettier": "^3.5.3",
         "prettier-plugin-organize-imports": "^4.1.0",
-        "prettier-plugin-tailwindcss": "^0.6.9",
-        "typescript-eslint": "^8.23.0",
-        "vue-tsc": "^2.2.4"
+        "prettier-plugin-tailwindcss": "^0.6.11",
+        "typescript-eslint": "^8.26.0",
+        "vue-tsc": "^2.2.8"
     },
     "dependencies": {
         "@headlessui/vue": "^1.7.23",
-        "@inertiajs/vue3": "^2.0.0-beta.3",
+        "@inertiajs/vue3": "^2.0.4",
         "@vitejs/plugin-vue": "^5.2.1",
-        "@vueuse/core": "^12.0.0",
+        "@vueuse/core": "^12.8.2",
         "autoprefixer": "^10.4.20",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.0",
+        "concurrently": "^9.1.2",
+        "laravel-vite-plugin": "^1.2.0",
         "lucide": "^0.468.0",
         "lucide-vue-next": "^0.468.0",
-        "radix-vue": "^1.9.11",
-        "tailwind-merge": "^2.5.5",
-        "tailwindcss": "^3.4.1",
+        "radix-vue": "^1.9.17",
+        "tailwind-merge": "^2.6.0",
+        "tailwindcss": "^3.4.17",
         "tailwindcss-animate": "^1.0.7",
-        "typescript": "^5.2.2",
+        "typescript": "^5.8.2",
         "vite": "^6.2.0",
         "vue": "^3.5.13",
-        "ziggy-js": "^2.4.2"
+        "ziggy-js": "^2.5.2"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
-        "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
-        "lightningcss-linux-x64-gnu": "^1.29.1"
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.0.11",
+        "lightningcss-linux-x64-gnu": "^1.29.2"
     }
 }
