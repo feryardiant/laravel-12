@@ -9,7 +9,8 @@
     "format": "prettier --write resources/",
     "format:check": "prettier --check resources/",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "postinstall": "simple-git-hooks"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.6.0",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@eslint/js": "^9.21.0",
     "@types/node": "^22.13.9",
     "autoprefixer": "^10.4.20",
@@ -36,11 +39,35 @@
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.2",
     "laravel-vite-plugin": "^1.2.0",
+    "lint-staged": "^15.4.3",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "^5.8.2",
     "vite": "^6.2.0",
     "vue-tsc": "^2.2.8"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm exec commitlint --edit $1",
+    "pre-commit": "pnpm exec lint-staged --allow-empty"
+  },
+  "lint-staged": {
+    "{app,database,tests}/**/*.php": [
+      "php vendor/bin/pint --preset laravel"
+    ],
+    "**/*.{json,js,ts,vue}": [
+      "eslint --fix"
+    ]
   }
 }
