@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "editorconfig.editorconfig",
+    "devsense.phptools-vscode",
+    "mikestead.dotenv",
+    "vue.volar",
+    "xdebug.php-debug"
+  ]
+}
