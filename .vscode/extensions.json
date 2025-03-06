@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "adrianwilczynski.alpine-js-intellisense",
+    "bradlc.vscode-tailwindcss",
+    "editorconfig.editorconfig",
+    "devsense.phptools-vscode",
+    "mikestead.dotenv",
+    "xdebug.php-debug"
+  ]
+}
