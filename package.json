@@ -6,8 +6,6 @@
     "build": "vite build",
     "build:ssr": "vite build && vite build --ssr",
     "dev": "vite",
-    "format": "prettier --write resources/",
-    "format:check": "prettier --check resources/",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "simple-git-hooks",
@@ -51,14 +49,11 @@
     "clsx": "^2.1.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.21.0",
-    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "laravel-vite-plugin": "^1.2.0",
     "lint-staged": "^15.4.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.8.2",
     "vite": "^6.2.0"
@@ -81,7 +76,7 @@
     "{app,database,tests}/**/*.php": [
       "php vendor/bin/pint --preset laravel"
     ],
-    "**/*.{json,js,jsx,ts,tsx}": [
+    "**/*.{css,json,js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
   }

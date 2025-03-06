@@ -35,5 +35,5 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx"]
+  "include": ["resources/client/**/*.ts", "resources/js/**/*.ts", "resources/js/**/*.tsx"]
 }

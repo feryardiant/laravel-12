@@ -1,0 +1,13 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": false,
+  "files.associations": {
+    "*.css": "tailwindcss",
+    ".env": "dotenv",
+    ".env.*": "dotenv"
+  },
+  "prettier.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
