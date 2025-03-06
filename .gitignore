@@ -1,23 +1,47 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+# Generic
+# --------------------------
+Thumbs.db
+Desktop.ini
+.directory
+.DS_Store
+._*
+*.cache
+*.crt
+*.log
+*.old
+*.key
+*.pem
+*.tmp
+*.zip
+*~
+
+# Build files
+# --------------------------
+bootstrap/ssr
+storage/pail
+
+# Development files
+# --------------------------
+.env.*
 .env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
+.php-version
+.tool-versions
+phpunit.dusk.xml
+node_modules
+vendor
+
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+
+# Node.js lock files
+.pnpm-store
+package-lock.json
+# pnpm-lock.yaml
+yarn.lock
+
+# But Keep these
+# --------------------------
+!.env.example
+!.env.*.example
+!.htaccess
+!.gitkeep
