@@ -6,7 +6,9 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'title' => env('APP_NAME')
+    ]);
 })->name('home');
 
 Route::view('dashboard', 'dashboard')
