@@ -26,7 +26,7 @@ storage/pail
 .env
 .php-version
 .tool-versions
-phpunit.dusk.xml
+# phpunit.dusk.xml
 node_modules
 vendor
 
