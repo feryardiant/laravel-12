@@ -11,21 +11,22 @@
   "require": {
     "php": "^8.2",
     "laravel/framework": "^12.0",
+    "laravel/horizon": "^5.31",
     "laravel/tinker": "^2.10.1",
     "livewire/flux": "^2.0",
     "livewire/volt": "^1.6.7",
-    "sentry/sentry-laravel": "^4.13",
-    "tightenco/ziggy": "^2.5"
+    "sentry/sentry-laravel": "^4.13"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",
     "laravel/pail": "^1.2.2",
     "laravel/pint": "^1.13",
     "laravel/sail": "^1.41",
+    "laravel/telescope": "^5.5",
     "mockery/mockery": "^1.6",
-    "nunomaduro/collision": "^8.6",
     "pestphp/pest": "^3.7",
-    "pestphp/pest-plugin-laravel": "^3.1"
+    "pestphp/pest-plugin-laravel": "^3.1",
+    "tightenco/ziggy": "^2.5"
   },
   "autoload": {
     "psr-4": {
@@ -68,7 +69,9 @@
   },
   "extra": {
     "laravel": {
-      "dont-discover": []
+      "dont-discover": [
+        "laravel/telescope"
+      ]
     }
   },
   "config": {
