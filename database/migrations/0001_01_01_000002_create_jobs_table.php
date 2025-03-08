@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (config('queue.default') !== 'database') {
+            return;
+        }
+
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -50,6 +54,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (config('queue.default') !== 'database') {
+            return;
+        }
+
         Schema::dropIfExists('jobs');
         Schema::dropIfExists('job_batches');
         Schema::dropIfExists('failed_jobs');
