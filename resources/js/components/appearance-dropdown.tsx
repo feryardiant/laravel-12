@@ -13,7 +13,7 @@ export default function AppearanceToggleDropdown({ className = '', ...props }: H
         return <Moon className="h-5 w-5" />
       case 'light':
         return <Sun className="h-5 w-5" />
-      default:
+      case 'system':
         return <Monitor className="h-5 w-5" />
     }
   }

@@ -72,6 +72,7 @@ export default function DeleteUser() {
 
               <DialogFooter className="gap-2">
                 <DialogClose asChild>
+                  {/* eslint-disable-next-line ts/no-unsafe-assignment */}
                   <Button variant="secondary" onClick={closeModal}>
                     Cancel
                   </Button>
