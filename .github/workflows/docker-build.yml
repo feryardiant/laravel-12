@@ -4,7 +4,7 @@ run-name: 'build(docker): image for `${{ github.ref_name }}`'
 on:
   # push:
   #   branches: [starter/*]
-  workflow_dispatch:
+  workflow_call:
   # workflow_run:
   #   workflows: [CI]
   #   types: [completed]

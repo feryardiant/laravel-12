@@ -99,6 +99,14 @@ jobs:
       #     name: test-reports-${{ matrix.php }}
       #     path: tests/reports/codeclimate.${{ matrix.php }}.json
 
+  docker:
+    name: Docker
+    uses: ./.github/workflows/docker-build.yml
+    if: ${{ github.event_name != 'pull_request' }}
+    needs: [units]
+    permissions:
+      contents: read
+      packages: write
   # e2e:
   #   name: Integration Test
   #   if: github.actor != 'dependabot[bot]'
@@ -177,11 +185,3 @@ jobs:
   #         path: |
   #           tests/Browser/console
   #           tests/Browser/screenshots
-
-  docker:
-    name: Docker
-    uses: .github/workflows/docker-build.yml@main
-    if: ${{ github.event_name != 'pull_request' }}
-    permissions:
-      contents: read
-      packages: write
