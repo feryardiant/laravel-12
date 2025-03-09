@@ -12,8 +12,11 @@ export default antfu({
   },
   ignores: [
     '**/build',
+    'storage/**',
   ],
   typescript: {
-    tsconfigPath: 'tsconfig.json',
+    overrides: {
+      'ts/strict-boolean-expressions': ['off'],
+    },
   },
 })
