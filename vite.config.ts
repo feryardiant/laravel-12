@@ -2,28 +2,57 @@ import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import laravel from 'laravel-vite-plugin'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
-export default defineConfig({
-  resolve: {
-    alias: {
-      '~': resolve(__dirname, 'resources/client'),
-      '@': resolve(__dirname, 'resources/js'),
-      'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, '.', ['APP'])
+  const isDev = ['local', 'testing'].includes(env.APP_ENV)
+
+  return {
+    resolve: {
+      alias: {
+        '~': resolve(__dirname, 'resources/client'),
+        '@': resolve(__dirname, 'resources/js'),
+        'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+      },
     },
-  },
 
-  esbuild: {
-    jsx: 'automatic',
-  },
+    build: {
+      sourcemap: isDev,
+      reportCompressedSize: false,
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        output: {
+          /**
+           * @see https://rollupjs.org/configuration-options/#output-manualchunks
+           */
+          manualChunks: (id) => {
+            if (id.includes('node_modules'))
+              return 'vendor'
+          },
+        },
+      },
+    },
 
-  plugins: [
-    laravel({
-      input: ['resources/css/app.css', 'resources/js/app.tsx'],
-      ssr: 'resources/js/ssr.jsx',
-      refresh: true,
-    }),
-    react(),
-    tailwindcss(),
-  ],
+    define: {
+      'import.meta.env.APP_NAME': JSON.stringify(env.APP_NAME),
+      'import.meta.env.APP_LOCALE': JSON.stringify(env.APP_LOCALE),
+      'import.meta.env.APP_URL': JSON.stringify(env.APP_URL),
+      'import.meta.env.APP_ENV': JSON.stringify(env.APP_ENV),
+    },
+
+    esbuild: {
+      jsx: 'automatic',
+    },
+
+    plugins: [
+      laravel({
+        input: ['resources/css/app.css', 'resources/js/app.tsx'],
+        ssr: 'resources/js/ssr.jsx',
+        refresh: true,
+      }),
+      react(),
+      tailwindcss(),
+    ],
+  }
 })
