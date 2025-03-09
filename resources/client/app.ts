@@ -1,5 +1,6 @@
 import type { AxiosStatic } from 'axios'
 import axios from 'axios'
+import { useSentry } from './sentry'
 
 window.axios = axios
 
@@ -12,3 +13,5 @@ declare global {
     axios: AxiosStatic
   }
 }
+
+useSentry()
