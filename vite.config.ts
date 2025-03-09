@@ -6,7 +6,7 @@ import tailwindcss from 'tailwindcss'
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, '.', ['APP'])
+  const env = loadEnv(mode, '.', ['APP', 'SENTRY'])
   const isDev = ['local', 'testing'].includes(env.APP_ENV)
 
   return {
@@ -40,6 +40,8 @@ export default defineConfig(({ mode }) => {
       'import.meta.env.APP_LOCALE': JSON.stringify(env.APP_LOCALE),
       'import.meta.env.APP_URL': JSON.stringify(env.APP_URL),
       'import.meta.env.APP_ENV': JSON.stringify(env.APP_ENV),
+      'import.meta.env.SENTRY_DSN': JSON.stringify(env.SENTRY_DSN),
+      'import.meta.env.SENTRY_PROFILING_ENABLE': Boolean(env.SENTRY_PROFILING_ENABLE ?? 0),
     },
 
     optimizeDeps: {
