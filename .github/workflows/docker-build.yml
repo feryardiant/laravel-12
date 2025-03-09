@@ -10,18 +10,10 @@ on:
     branches: [starter/*]
 
 jobs:
-  prepare:
-    name: Prepare
-    uses: projek-xyz/actions/.github/workflows/configure.yml@main
-    permissions:
-      pull-requests: write
-      contents: read
-
   image:
     name: Image
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.event_name != 'pull_request' }}
-    needs: [prepare]
     permissions:
       contents: read
       packages: write
@@ -33,11 +25,13 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Download assets
         uses: dawidd6/action-download-artifact@v9
         with:
-          branch: ${{ needs.prepare.outputs.target-branch }}
+          branch: ${{ github.event.workflow_run.head_branch }}
           workflow: ${{ github.event.workflow_run.workflow_id }}
           name: build-testing
           path: public
