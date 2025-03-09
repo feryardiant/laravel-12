@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Sentry\Laravel\Integration;
+use Sentry\State\Scope;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->configureSentry();
+    }
+
+    private function configureSentry()
+    {
+        /**
+         * @link https://docs.sentry.io/platforms/php/guides/laravel/enriching-events/identify-user/
+         */
+        Integration::configureScope(static function (Scope $scope) {
+            $userData = ['ip_address' => request()->getClientIp()];
+
+            if (auth()->check()) {
+                /** @var \App\Models\User */
+                $user = auth()->user();
+
+                $userData['id'] = $user->getKey();
+                $userData['name'] = $user->name;
+                $userData['email'] = $user->email;
+            }
+
+            $scope->setUser($userData);
+        });
     }
 }
