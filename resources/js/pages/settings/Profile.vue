@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { BreadcrumbItem, SharedData, User } from '@/types'
-import DeleteUser from '@/components/DeleteUser.vue'
+import type { BreadcrumbItem, User } from '@/types'
+import type { PageProps } from '@inertiajs/core'
 
+import DeleteUser from '@/components/DeleteUser.vue'
 import HeadingSmall from '@/components/HeadingSmall.vue'
 import InputError from '@/components/InputError.vue'
 import { Button } from '@/components/ui/button'
@@ -26,7 +27,7 @@ const breadcrumbs: BreadcrumbItem[] = [
   },
 ]
 
-const page = usePage<SharedData>()
+const page = usePage<PageProps>()
 const user = page.props.auth.user as User
 
 const form = useForm({

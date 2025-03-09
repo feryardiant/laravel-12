@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { SharedData, User } from '@/types'
+import type { User } from '@/types'
+import type { PageProps } from '@inertiajs/core'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import UserInfo from '@/components/UserInfo.vue'
@@ -7,7 +8,7 @@ import { usePage } from '@inertiajs/vue3'
 import { ChevronsUpDown } from 'lucide-vue-next'
 import UserMenuContent from './UserMenuContent.vue'
 
-const page = usePage<SharedData>()
+const page = usePage<PageProps>()
 const user = page.props.auth.user as User
 </script>
 

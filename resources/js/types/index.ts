@@ -1,5 +1,12 @@
-import type { PageProps } from '@inertiajs/core'
 import type { LucideIcon } from 'lucide-vue-next'
+
+declare module '@inertiajs/core' {
+  export interface PageProps {
+    name: string
+    quote: { message: string, author: string }
+    auth: Auth
+  }
+}
 
 export interface Auth {
   user: User
@@ -15,12 +22,6 @@ export interface NavItem {
   href: string
   icon?: LucideIcon
   isActive?: boolean
-}
-
-export interface SharedData extends PageProps {
-  name: string
-  quote: { message: string, author: string }
-  auth: Auth
 }
 
 export interface User {

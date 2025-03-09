@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { NavItem, SharedData } from '@/types'
+import type { NavItem } from '@/types'
+import type { PageProps } from '@inertiajs/core'
 import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { Link, usePage } from '@inertiajs/vue3'
 
@@ -7,7 +8,7 @@ defineProps<{
   items: NavItem[]
 }>()
 
-const page = usePage<SharedData>()
+const page = usePage<PageProps>()
 </script>
 
 <template>
