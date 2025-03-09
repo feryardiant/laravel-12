@@ -177,3 +177,11 @@ jobs:
   #         path: |
   #           tests/Browser/console
   #           tests/Browser/screenshots
+
+  docker:
+    name: Docker
+    uses: .github/workflows/docker-build.yml@main
+    if: ${{ github.event_name != 'pull_request' }}
+    permissions:
+      contents: read
+      packages: write

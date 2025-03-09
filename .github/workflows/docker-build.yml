@@ -1,19 +1,20 @@
 name: Docker
-run-name: 'build(docker): image for `${{ github.event.workflow_run.head_branch }}`'
+run-name: 'build(docker): image for `${{ github.ref_name }}`'
 
 on:
   # push:
   #   branches: [starter/*]
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
-    branches: [starter/*]
+  workflow_dispatch:
+  # workflow_run:
+  #   workflows: [CI]
+  #   types: [completed]
+  #   branches: [starter/*]
 
 jobs:
   image:
     name: Image
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event_name != 'pull_request' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' && github.event_name != 'pull_request' }}
     permissions:
       contents: read
       packages: write
@@ -25,14 +26,14 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+        # with:
+        #   ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Download assets
         uses: dawidd6/action-download-artifact@v9
         with:
-          branch: ${{ github.event.workflow_run.head_branch }}
-          workflow: ${{ github.event.workflow_run.workflow_id }}
+          # branch: ${{ github.event.workflow_run.head_branch }}
+          # workflow: ${{ github.event.workflow_run.workflow_id }}
           name: build-testing
           path: public
           if_no_artifact_found: warn
