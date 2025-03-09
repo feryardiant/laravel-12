@@ -12,6 +12,7 @@ export default antfu({
   },
   ignores: [
     '**/build',
+    'storage/**',
   ],
   react: {
     overrides: {
@@ -20,10 +21,11 @@ export default antfu({
       'react/no-unstable-default-props': ['off'],
       'react-dom/no-unsafe-target-blank': ['off'],
       'react-refresh/only-export-components': ['off'],
-      'ts/strict-boolean-expressions': ['off'],
     },
   },
   typescript: {
-    tsconfigPath: 'tsconfig.json',
+    overrides: {
+      'ts/strict-boolean-expressions': ['off'],
+    },
   },
 })

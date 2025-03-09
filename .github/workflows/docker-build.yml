@@ -1,5 +1,5 @@
 name: Docker
-run-name: "build(docker): image for `${{ github.event.workflow_run.head_branch }}`"
+run-name: 'build(docker): image for `${{ github.event.workflow_run.head_branch }}`'
 
 on:
   # push:
