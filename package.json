@@ -10,6 +10,7 @@
     "postinstall": "simple-git-hooks"
   },
   "dependencies": {
+    "@sentry/browser": "^9.5.0",
     "axios": "^1.8.2"
   },
   "devDependencies": {
