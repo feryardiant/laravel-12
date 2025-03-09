@@ -1,9 +1,11 @@
 import type { route as routeFn } from 'ziggy-js'
 
 import { createInertiaApp } from '@inertiajs/react'
+import { withProfiler } from '@sentry/react'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { createRoot } from 'react-dom/client'
 import { initializeTheme } from './hooks/use-appearance'
+import { initializeSentry } from './sentry'
 import '../css/app.css'
 
 declare global {
@@ -18,12 +20,16 @@ void createInertiaApp({
   setup({ el, App, props }) {
     const root = createRoot(el)
 
+    withProfiler(App)
+
     root.render(<App {...props} />)
   },
   progress: {
     color: '#4B5563',
   },
 })
+
+initializeSentry()
 
 // This will set light / dark mode on load...
 initializeTheme()
