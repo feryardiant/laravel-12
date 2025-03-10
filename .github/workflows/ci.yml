@@ -99,89 +99,11 @@ jobs:
       #     name: test-reports-${{ matrix.php }}
       #     path: tests/reports/codeclimate.${{ matrix.php }}.json
 
-  # e2e:
-  #   name: Integration Test
-  #   if: github.actor != 'dependabot[bot]'
-  #   runs-on: ubuntu-latest
-  #   needs: [prepare, build]
-
-  #   env:
-  #     DB_DATABASE: ${{ github.repository_owner }}
-  #     DB_USERNAME: ${{ github.repository_owner }}
-  #     DB_PASSWORD: secret
-  #     DEBUGBAR_ENABLED: false
-  #     DUSK_HEADLESS_DISABLED: true
-
-  #   services:
-  #     postgresql:
-  #       image: postgres:14
-  #       env:
-  #         POSTGRES_DB: ${{ env.DB_DATABASE }}
-  #         POSTGRES_USER: ${{ env.DB_USERNAME }}
-  #         POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
-  #       ports:
-  #         - 5432:5432
-  #       options: >-
-  #         --health-cmd=pg_isready
-  #         --health-interval=10s
-  #         --health-timeout=5s
-  #         --health-retries=3
-
-  #   steps:
-  #     - name: Checkout sources
-  #       uses: actions/checkout@v4
-
-  #     - name: Setup PHP
-  #       uses: shivammathur/setup-php@v2
-  #       with:
-  #         php-version: 8.2
-  #         coverage: xdebug
-
-  #     - name: Prepare Composer Cache
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ${{ needs.prepare.outputs.composer-cache }}
-  #         key: ${{ needs.prepare.outputs.composer-cache-key }}-composer-${{ hashFiles('**/composer.lock') }}
-  #         restore-keys: ${{ needs.prepare.outputs.composer-cache-key }}-composer-
-
-  #     - name: Install dependencies
-  #       run: |
-  #         cp .github/.env.example .env
-  #         composer update --prefer-dist --no-interaction --no-progress --ansi
-  #         php artisan key:generate
-  #         php artisan migrate
-
-  #     - name: Download assets
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: build-${{ needs.build.outputs.target-env }}
-  #         path: public
-
-  #     - name: Start dev server
-  #       run: |
-  #         php artisan serve > /dev/null 2>&1 &
-
-  #     - name: Run e2e tests
-  #       env:
-  #         BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-  #         BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-  #       run: |
-  #         php artisan dusk:browserstack-local
-  #         php artisan dusk --ansi
-
-  #     - name: Upload e2e tests logs
-  #       if: failure()
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: e2e-logs
-  #         path: |
-  #           tests/Browser/console
-  #           tests/Browser/screenshots
-
   docker:
     name: Docker
     uses: ./.github/workflows/docker-build.yml
     if: ${{ github.event_name != 'pull_request' }}
+    needs: [units]
     permissions:
       contents: read
       packages: write
