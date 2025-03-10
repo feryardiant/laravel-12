@@ -18,7 +18,7 @@ frankenphp
 
 # 2. Ignore build and tests config files/directories we don't need
 .deploy/development
-.deploy/production
+# .deploy/production
 .devcontainer
 .pnpm-store
 *.config.js
@@ -44,6 +44,7 @@ vendor
 **/*~
 **/*.old
 **/*.log
+**/*.map
 **/*.pid
 **/*.pem
 **/*.key
